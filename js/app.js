@@ -10,6 +10,9 @@ const getNextJoke = async () => {
   content.classList.add("fst-italic");
 };
 
+//get first joke at initialization
+getNextJoke();
+
 jokesForm.addEventListener("submit", (e) => {
   //preventing default
   e.preventDefault();
