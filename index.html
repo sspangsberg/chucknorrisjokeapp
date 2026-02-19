@@ -1,35 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <title>Chuck Norris Random Joke Generator</title>
-</head>
+<html>
 
 <body>
+  <form>
+    <button type="submit" id="nextJoke">Get Next Joke</button>
+  </form>
 
-  <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-    <div class="container" style="text-align: center;">
-      <div class="row">
-        <h1>Chuck Norris</h1>
-        <h1 class="mb-5">Random Jokes Generator</h1>
+  <div id="content">Click the button</div>
 
-        <form id="jokesForm">
-          <button type="submit" id="nextJoke" class="btn btn-success">Get Next Joke</button>
-        </form>
-      </div>
-      <br><br>
-      <div class="card">
-        <div id="content" class="card-body">Click the button!</div>
-      </div>
-      <br><br>
-      <img src="assets/chucknorris_logo.png" title="Chuck Norris API Random Jokes Generator" />
-    </div>
-  </div>
-  
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/app.js"></script>
+  <script>
+
+    const getNextJoke = async () => {
+
+      const apiURL = "https://api.chucknorris.io/jokes/random";
+      const res = await fetch(apiURL);
+      const joke = await res.json();
+
+      const content = document.getElementById('content');
+      content.innerText = joke.value;
+    };
+
+    //get first joke at initialization
+    getNextJoke();
+
+
+  </script>
 </body>
+
 </html>
